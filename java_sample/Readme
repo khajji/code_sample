@@ -1,0 +1,40 @@
+Note1: 
+Please have a look at the class TMixturePredictor.java and TPredictorsManager.java
+
+
+
+Note2: 
+TMixturePredictor.java implements the more general interface Predictor.java
+TMixturePredictor.java has as a main attribute a Mixture.java instance
+We provide those two classes (which were also coded by myself) additionally in the code
+
+
+Note3:
+This code is a small part of a my semester project code. Thus, the given code calls some other
+static methods and classes that I have coded which I did not provide here.
+However, Mixture.java is a class coded to represent any mixture of multinomials object. Thus, it
+does not need any external class or package.
+
+
+Questionnaire answers: 
+1-What was the project that you wrote this code for?
+I wrote this code in the project demographics & mobility project where the goal was to develop a model that predicts the class to which belong a user based on 
+a small sample of places he visited. We collected a large data of users and their tweets and we used geo-taggued tweets to retrieve the places visited by our users.
+
+2-What does this code do and what is the context that it is assumed to be running in? (Operating environment, libraries, etc.)
+As the goal of the project was to develop a model that does the best predictions for that task, I developed a lot of different predictors (baselines and new models) and 
+a main task was to be able to compare them easily. The code available here is the code of the class that manages those predictors and deals with training and comparing them (TPredictorsManager.java). I also provide one example of those predictors (TMixturePredictor.java)
+
+
+3-Are there any interesting challenges that you solved in writing this code? What?
+When I was writing this code, one of the main challenges I had in mind was to write a well structured code, that is modular and safe, and that will enable me to integrate
+new future predictors easily and compare them (any kind of predictor, as I did not know at that stage the predictors I will develop). For that reason, I chosen the following code structure where predictors
+must implement some common methods, and where they register to a manager that trains them and compare them.
+
+
+4-Would you approach the coding the same way if you had to do it again, or did you learn something which might cause you to go about things differently?
+In this code, some points dealing with the structure should be improved:
+i- A predictor does not need to be trained in all the cases, it can already be trained. An example is TMixturePredictor.java.
+ii- A predictor does not always have a loglikelihood to provide but only the probabilistic ones have.
+If I had to write this code again, I would take into account this and do the modifications in the structure that are implied by those observations in TPredictorsManager.java and in Predictor.java
+

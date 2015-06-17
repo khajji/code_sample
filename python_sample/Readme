@@ -1,0 +1,21 @@
+Questionnaire answers: 
+1-What was the project that you wrote this code for?
+I needed to write a code that does the job this code does in many of my data analytics projects. Thus, I wrote it the first time I needed it, 
+then each time I needed it I iterated over it again to improve it. This is one of the reasons I have chosen to make it available for you. I ended up with the following version which is simple to understand, compact, efficient in memory and time consumptions and can be used as a blackbox in any context where this kind of job needs to be done.  It is used to infer parameters under a specific assumptions of the model where the data is assumed to come from.
+
+2-What does this code do and what is the context that it is assumed to be running in? (Operating environment, libraries, etc.)
+This code implements the EM algorithm for the mixture of multinomials. The input is a dictionary of ids representing documents and words and the output are the parameters that maximizes the likelihood of the observed data. Thus, word_ids and document_ids can represent anything (and not necessarly words and documents). I already used this code for a corpus of document. I also used it for geographic locations (where a word is a place_id and a document is a set of visited places_id) and for smatphone logs (where word is a feature_id and document a set of features). This code is an independent class that do not call any outside library (except numpy) that can be executed in any environment running python.
+
+
+3-Are there any interesting challenges that you solved in writing this code? What?
+This code slowly evolved from a long code, which seemed to do very complicated things, consuming a lot of memory ressources, running slowly and which worked only in a certain context, to a compact code that looks to do easy things, works fast, consume much less memory ressources and that can be used as a blackbox in any context. Those were the main challenges I tried to solve during the different iterations I did on this code.
+
+
+4-Would you approach the coding the same way if you had to do it again, or did you learn something which might cause you to go about things differently?
+Each iteration I did on this code was done because I thaught that there was some elements that could highly improve the code quality. Therefore, if I had to write again the code from the first time, I would defitively not write it as I wrote it the first time. For example, at the first time, the input has a string representing the words as keys which would not make it work in another context and complicated the code. Moreover, the resp was a matrix were the responsabilities corresponding to words that are not present in a document d were stored an used for computation. For sparse data(and this is the case for the majority of data using this model), not taking them into account causes a huge gain in memory and in time.
+Each time I had to use this code, the context on which I wanted to use it caused me to realize that I can make some improvements. Now, I do not see any obvious changes that I could make to improve this code. But who knows if I will see some when I will need to use it in a new context again.
+
+
+Note:
+I tried to find old versions of this code to put it available for you so you can see concretely the changes I added, but I have not found any.
+
